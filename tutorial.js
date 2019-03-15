@@ -163,6 +163,17 @@ myTemplates = `
     parseInt("0xff"): ${parseInt("0xff")}
     parseInt("ff"): ${parseInt("ff")}
     parseInt("ff", 16): ${parseInt("ff", 16)}
+    "string".length: ${"string".length}
+    "string"[0]: ${"string"[0]}
+    "string".slice(0, 4): ${"string".slice(0,4)}
+    "string".substring(0, 4): ${"string".substring(0,4)}
+    "string".startsWith("S"): ${"string".startsWith("S")}
+    "string".indexOf("t"): ${"string".indexOf("t")}
+    "string".codePointAt(0): ${"string".codePointAt(1)} // the UTF-16 code of "t"
+    String.fromCodePoint(116): ${String.fromCodePoint(116)} // the 116th letter in UTF-16
+    "string".repeat(3): ${"string".repeat(3)}
+    " string ".trim(): ${" string ".trim()}
+
 `;
 
 console.log(myTemplates);
