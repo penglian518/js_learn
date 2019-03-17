@@ -177,3 +177,39 @@ myTemplates = `
 `;
 
 console.log(myTemplates);
+
+/*  Arrays
+        push pop shift unshift
+        for .. of loop
+        splice, slice
+        forEach(function)       // iterate an array
+        indexOf lastIndexOf     // searching 
+        find findIndex          // find the first true
+        filter                  // find all true
+        map                     // transform. apply a func to each element and collect the results
+        sort(func)              // sort((a,b) => a-b) sort numerically.
+        reduce(func, initial)
+*/
+
+let fruits = ['Apple', 'Orange', 'Plum'];
+
+for (let f of fruits) {
+console.log(f);
+}
+
+console.log(fruits[fruits.length-1]);
+console.log(fruits.toString());
+console.log(fruits.concat(fruits));
+fruits.splice(1,1);     // from index delete n elements
+console.log(fruits);
+fruits.splice(1, 0, 'Orange', 'Grape'); // from index(1) delete 0 element, and add others
+console.log(fruits);
+console.log(fruits.slice(1,3));
+fruits.forEach((item, idx, arr) => {console.log(`The index of ${item} is ${idx}.`)});
+console.log(fruits.find((i) => i.startsWith('G')));     // find(some functions)
+console.log(fruits.map((i) => i.length));               // transform to the length of each item
+console.log('Apple,Orange,Plum'.split(','));
+//console.log(Array.from(Array(10).keys()));              // range(10) in Python
+let arr1 = Array.from(Array(10).keys());
+console.log(arr1.reduce((a,b) => a+b, 0));              // the sum of range(10)
+
