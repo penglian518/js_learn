@@ -213,3 +213,47 @@ console.log('Apple,Orange,Plum'.split(','));
 let arr1 = Array.from(Array(10).keys());
 console.log(arr1.reduce((a,b) => a+b, 0));              // the sum of range(10)
 
+
+// iterator
+let range = {
+    from: 1,
+    to: 5,
+
+    // iterator function. Symbol.iterator is a special build-in symbol
+    [Symbol.iterator](){
+        this.current = this.from;
+        return this;
+    },
+
+    // next function. next() is required by iterator
+    // the result of next() must have the form {done: Boolean, value: any},
+    // when done=true means the iteration is finished, 
+    // otherwise value must be the NEW value.
+    next(){
+        if (this.current <= this.to) {
+            return {done: false, value: this.current++};
+        } else {
+            return {done: true};
+        }
+    },
+
+}
+
+for (let num of range) {
+    console.log(num);
+}
+
+// array like (has indexes and length)
+let arrayLike = {
+    0: "hello",
+    1: "world",
+    length: 2,
+};
+
+// convert array like to a real array using the universal method Array.from
+let arr = Array.from(arrayLike);
+for (let i of arr) {
+    console.log(i);
+}
+console.log(arr.pop());
+
