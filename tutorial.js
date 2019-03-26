@@ -261,7 +261,16 @@ console.log(arr.pop());
 /* Objects
  * An object can be created with {} with an optional list of properties.
  * A property is a "key:value" pair.
- * key -> property name
+ * key -> property name, number will be converted to string automatically
+ * Symbol can be used as key, should be put in []
+ * 
+ * e.g. 
+ * let id = Symbol("id");
+ * let user = {
+ *      name: "John",
+ *      [id]: 123,      // the key [id] is a symbol.
+ * }
+ * 
 */
 
 //let user = Object(); 
@@ -294,3 +303,37 @@ console.log(user1);
 console.log("Note: user and user1 shared the same property 'sizes'!\n\
     One solution is to use _lodash lib to deep clone an obj.");
 
+
+/* Symbol is a special type in JS
+ *  Symbols don't auto-convert to a string, have to use .toString() function
+ */
+
+let id = Symbol();
+let id1 = Symbol("id_descrip");    // "id_descrip" is an optional description of this symbol
+let id2 = Symbol("id_descrip");
+
+console.log("id1 === id2? ", id1 === id2);
+console.log(`${id1.toString()}`);
+
+let user2 = {
+    name: "John",
+    [id]: 0, 
+}
+
+user2.id = "new id";
+console.log("Symbol key cannot be changed by '.' method: ", user2);
+user2[id] = "new id";
+console.log("Symbol key cannot be changed by '[]' method: ", user2);
+
+for (let i in user2) {
+    console.log(i, ": ", user2[i]);
+}
+
+// global symbols
+let id3 = Symbol.for("id_descrip");
+let id4 = Symbol.for("id_descrip");
+console.log("id3 === id4? ", id3 === id4);
+console.log(Symbol.keyFor(id3));
+
+// system symbols
+// Symbol.iterator, Symbol.hasInstance, Symbol.toPrimitive, ...
