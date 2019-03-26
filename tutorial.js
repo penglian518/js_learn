@@ -257,3 +257,40 @@ for (let i of arr) {
 }
 console.log(arr.pop());
 
+
+/* Objects
+ * An object can be created with {} with an optional list of properties.
+ * A property is a "key:value" pair.
+ * key -> property name
+*/
+
+//let user = Object(); 
+let user = {};      // define an object
+// define the properties
+user.name = "John";
+user['full name'] = "John Smith";
+user['age'] = 30;
+user.sex = "male";
+// delete property
+delete user.sex;
+
+console.log(user);
+console.log("Is dob in user? ", "dob" in user);
+// the value of undefined property is "undefined"
+console.log("The value of dob: ", user.dob);    
+
+//"for ... in" loop to show all properties of an obj
+for (let k in user) {
+    console.log(k, user[k]);    // use [] instead of . to access the value!
+}
+
+// two independent objects are not equal.
+console.log("Is {} == {}? ", {}=={});
+user.sizes = {"height": 180, "width": 50};
+
+// clone an object
+let user1 = Object.assign({}, user);
+console.log(user1);
+console.log("Note: user and user1 shared the same property 'sizes'!\n\
+    One solution is to use _lodash lib to deep clone an obj.");
+
