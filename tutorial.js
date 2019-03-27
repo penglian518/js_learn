@@ -337,3 +337,26 @@ console.log(Symbol.keyFor(id3));
 
 // system symbols
 // Symbol.iterator, Symbol.hasInstance, Symbol.toPrimitive, ...
+
+/* Object methods, this
+ * 
+ * Note: in JS 'this' can be used to any function.
+ */
+
+// add a method to the obj user
+user.sayHi = function () {
+    console.log(`Hi! This is ${this.name}. I'm ${this['age']} years old.`);
+}
+user.sayHi();
+
+// an alternative way to define methods
+let user3 = {
+    name: "John Smith",
+    age: 30,
+
+    // method of the obj user3
+    sayHi() {
+        console.log(`Hi! This is ${this.name}. I'm ${this['age']} years old.`);
+    }
+}
+user3.sayHi();
